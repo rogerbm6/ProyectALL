@@ -18,7 +18,7 @@ if(isset($_GET["menu"])){
 
 <?php
 switch($menu){
-    case "index":
+    case "index":   // jejjeje
     echo "<h1 class='display-3'>Inicio</h1>";
     echo "<hr>";
     break;
