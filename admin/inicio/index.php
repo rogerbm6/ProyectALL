@@ -175,6 +175,79 @@ $conex = connectdb("caminodejose");
       admin_almacen($conex);
       break;
 
+      case "empleados":
+       echo "
+        <div class='jumbotron'>
+          <h1 class='display-2'>Empleados</h1>
+          <p class='lead'>Configuracion de usuarios</p>
+          <br>
+          <hr class='m-y-md'>
+          <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#insertar' aria-expanded='false' aria-controls='insertar'>Nuevo empleado</button>
+          <div class='collapse' id='insertar'>
+            <div class='card card-body'>
+              <form method='POST' enctype='multipart/form-data' action='index.php?menu=empleados'>
+                <input type='hidden' name='accion' value='insertaremp' />
+
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroup-sizing-default'>Nombre</span>
+                  </div>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre'>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroup-sizing-default'>Direccion</span>
+                  </div>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='direccion'>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroup-sizing-default'>Dni</span>
+                  </div>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='dni' pattern='[0-9]{8}[A-Za-z]{1}' >
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
+                  </div>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email'>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroup-sizing-default'>Telefono</span>
+                  </div>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='telefono' pattern='[0-9]{9}'>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
+                  </div>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords'>
+                </div>
+
+
+
+                <button type='sumbit' class='btn btn-primary'>Insertar</button>
+
+              </form>
+            </div>
+          </div>
+
+
+        </div>
+        ";
+
+      empleados($conex);
+      break;
+
+
+
+
 
 
 

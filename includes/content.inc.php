@@ -248,9 +248,9 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
     function admin_almacen($con){
 
-        $comidas = mysqli_query($con,"SELECT * FROM almacen");
+        $almacen = mysqli_query($con,"SELECT * FROM almacen");
 
-    while($registro = mysqli_fetch_array($comidas)){
+    while($registro = mysqli_fetch_array($almacen)){
       $ident = "a".$registro["idAlmacen"];
       echo "
       <div class='jumbotron bg-secondary'>
@@ -266,7 +266,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         <a href='index.php?menu=almacen&accion=borraralm&idAlmacen=".$registro["idAlmacen"]."' class='btn btn-danger'>Borrar</a>
 
 
-        <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar plato</button>
+        <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar producto</button>
         <div class='collapse' id='".$ident."'>
           <div class='card card-body'>
             <form method='POST' enctype='multipart/form-data' action='index.php?menu=almacen'>
@@ -402,12 +402,133 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
         }
 
+        if ($crud == "actualizaremp") {
+
+          mysqli_query($con, "update empleados set nombre = '".trim($_POST["nombre"])."', direccion= '".trim($_POST["direccion"])."', dni = '".trim($_POST["dni"])."', email = '".trim($_POST["email"])."', telefono = '".trim($_POST["telefono"])."',
+            passwords = '".trim(md5($_POST["passwords"]))."'   where idEmpleado = ".$_POST["idEmpleado"]."");
+
+          header("Location:index.php?menu=empleados");
+
+        }
+
+        if ($crud == "insertaremp") {
+
+          $query =  "insert into empleados(direccion, dni, nombre, email, passwords, telefono) values('".$_POST["direccion"]."', '".$_POST["dni"]."','".$_POST["nombre"]."' , '".$_POST["email"]."' ,'".$_POST["passwords"]."','".$_POST["telefono"]."' )";
+
+
+          mysqli_query($con, $query);
+
+          header("Location:index.php?menu=empleados");
+
+        }
+
 
 
         mysqli_error($con);
 
       }
 
+    }
+
+
+    function empleados($con){
+
+      $empleados = mysqli_query($con,"SELECT * FROM empleados");
+
+    while($registro = mysqli_fetch_array($empleados)){
+      $ident = "a".$registro["idEmpleado"];
+      echo "
+      <div class='jumbotron bg-secondary'>
+
+      <div class='row'>
+        <div class='col-3'>
+
+        </div>
+        <div class='col-9'>
+        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+        <h1>Dni: ".$registro["dni"]."</h1>
+        <p class='lead'>".$registro["direccion"]."</p>
+        <p class='lead'>".$registro["email"]."</p>
+        <p class='lead'>".$registro["telefono"]."</p>
+        </div>
+      </div>
+        <hr>
+        <a href='index.php?menu=empleados&accion=borraremp&idEmpleado=".$registro["idEmpleado"]."' class='btn btn-danger'>Borrar</a>
+
+
+        <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar</button>
+        <div class='collapse' id='".$ident."'>
+          <div class='card card-body'>
+            <form method='POST' enctype='multipart/form-data' action='index.php?menu=empleados'>
+              <input type='hidden' name='accion' value='actualizaremp' />
+              <input type='hidden' name='idEmpleado' value='".$registro["idEmpleado"]."'/>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Nombre</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre' value=".$registro["nombre"].">
+              </div>
+              <br>
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Direccion</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='direccion' value=".$registro["direccion"].">
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Dni</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='dni' value=".$registro["dni"]." pattern='[0-9]{8}[A-Za-z]{1}'>
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email' value=".$registro["email"].">
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Telefono</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='telefono' value=".$registro["telefono"]." pattern='[0-9]{9}'>
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' value=".$registro["passwords"]." >
+              </div>
+
+              <br>
+
+
+
+
+              <button type='sumbit' class='btn btn-primary'>Aceptar</button>
+
+            </form>
+          </div>
+        </div>
+
+
+
+
+      </div>";
+        }
     }
 
 

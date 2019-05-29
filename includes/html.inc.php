@@ -16,6 +16,7 @@ function headere($titulo)
         </title>
         <link type="text/css" href="disen/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="disen/css/disenio.css" rel="stylesheet">
+        <link type="image/png" href="images/primera.png" rel="icon" sizes="auto">
     </head>
 
     <body class="bg-primary">
@@ -139,6 +140,7 @@ function headerlogin($titulo)
         </title>
         <link type="text/css" href="../../disen/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../../disen/css/disenio.css" rel="stylesheet">
+        <link type="image/png" href="../../images/primera.png" rel="icon" sizes="auto">
     </head>
 
     <body class="bg-primary">
