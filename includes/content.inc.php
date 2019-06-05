@@ -422,6 +422,27 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
         }
 
+        if ($crud == "borraremp") {
+
+          mysqli_query($con, "delete from empleados where idEmpleado = ".$_GET["idEmpleado"]." ;");
+
+          header("Location:index.php?menu=empleados");
+
+        }
+        if ($crud == "insertarpe") {
+
+
+
+          $query =  "insert into pedidos(TlfCont, fechahora, nombreCont, idEmpleado, fecha, hora) values('".$_POST["TlfCont"]."', now(), '".$_POST["nombreCont"]."' ,(select idEmpleado from empleados where nombre='".$_SESSION["usuario"]."'), '".$_POST["fecha"]."' ,'".$_POST["hora"]."')";
+
+
+          mysqli_query($con, $query);
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+
 
 
         mysqli_error($con);
@@ -530,6 +551,109 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       </div>";
         }
     }
+
+
+
+    /*function pedidos($con){
+
+      $pedidos = mysqli_query($con,"SELECT * FROM pedidos left join ");
+
+    while($registro = mysqli_fetch_array($pedidos)){
+      $ident = "a".$registro["idEmpleado"];
+      echo "
+      <div class='jumbotron bg-secondary'>
+
+      <div class='row'>
+        <div class='col-3'>
+
+        </div>
+        <div class='col-9'>
+        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+        <h1>Dni: ".$registro["dni"]."</h1>
+        <p class='lead'>".$registro["direccion"]."</p>
+        <p class='lead'>".$registro["email"]."</p>
+        <p class='lead'>".$registro["telefono"]."</p>
+        </div>
+      </div>
+        <hr>
+        <a href='index.php?menu=empleados&accion=borraremp&idEmpleado=".$registro["idEmpleado"]."' class='btn btn-danger'>Borrar</a>
+
+
+        <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar</button>
+        <div class='collapse' id='".$ident."'>
+          <div class='card card-body'>
+            <form method='POST' enctype='multipart/form-data' action='index.php?menu=empleados'>
+              <input type='hidden' name='accion' value='actualizaremp' />
+              <input type='hidden' name='idEmpleado' value='".$registro["idEmpleado"]."'/>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Nombre</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre' value=".$registro["nombre"].">
+              </div>
+              <br>
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Direccion</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='direccion' value=".$registro["direccion"].">
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Dni</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='dni' value=".$registro["dni"]." pattern='[0-9]{8}[A-Za-z]{1}'>
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email' value=".$registro["email"].">
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Telefono</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='telefono' value=".$registro["telefono"]." pattern='[0-9]{9}'>
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
+                </div>
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' value=".$registro["passwords"]." >
+              </div>
+
+              <br>
+
+
+
+
+              <button type='sumbit' class='btn btn-primary'>Aceptar</button>
+
+            </form>
+          </div>
+        </div>
+
+
+
+
+      </div>";
+        }
+    }*/
+
 
 
 
