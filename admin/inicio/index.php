@@ -7,7 +7,6 @@ if(isset($_SESSION["usuario"])){
   include("../../includes/content.inc.php");
 
 
-
 $conex = connectdb("caminodejose");
   headerlogin("administracion");
 
@@ -232,6 +231,15 @@ $conex = connectdb("caminodejose");
                   <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords'>
                 </div>
 
+                <div class='input-group mb-3'>
+                  <div class='input-group-prepend'>
+                    <span class='input-group-text' id='inputGroupFileAddon01'>Foto</span>
+                  </div>
+                  <div class='custom-file'>
+                    <input type='file' class='custom-file-input' id='inputGroupFile01' aria-describedby='inputGroupFileAddon01' name='foto'>
+                    <label class='custom-file-label' for='inputGroupFile01'> Elige la foto</label>
+                  </div>
+                </div>
 
 
                 <button type='sumbit' class='btn btn-primary'>Insertar</button>
@@ -248,63 +256,10 @@ $conex = connectdb("caminodejose");
       break;
 
       case "pedidos":
-       echo "
-        <div class='jumbotron'>
-          <h1 class='display-2'>Pedidos</h1>
-          <p class='lead'>Configuracion de los pedidos</p>
-          <br>
-          <hr class='m-y-md'>
-          <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#pedido' aria-expanded='false' aria-controls='pedido'>Nuevo pedido</button>
-          <div class='collapse' id='pedido'>
-            <div class='card card-body'>
-              <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
-                <input type='hidden' name='accion' value='insertarpe' />
+      nombrespe($conex);
+      pedidos($conex);
 
 
-
-                <div class='input-group mb-3'>
-                  <div class='input-group-prepend'>
-                    <span class='input-group-text' id='inputGroup-sizing-default'>Nombre contacto </span>
-                  </div>
-                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombreCont'>
-                  </div>
-
-                  <div class='input-group mb-3'>
-                    <div class='input-group-prepend'>
-                      <span class='input-group-text' id='inputGroup-sizing-default'>Telefono Contacto </span>
-                    </div>
-                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}'>
-                  </div>
-
-
-
-
-
-                <div class='input-group mb-3'>
-                  <div class='input-group-prepend'>
-                    <span class='input-group-text' id='inputGroup-sizing-default'>Fecha</span>
-                  </div>
-                  <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
-                </div>
-
-                <div class='input-group mb-3'>
-                  <div class='input-group-prepend'>
-                    <span class='input-group-text' id='inputGroup-sizing-default'>Hora</span>
-                  </div>
-                  <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora'>
-                </div>
-
-                <button type='sumbit' class='btn btn-primary'>Insertar</button>
-
-              </form>
-            </div>
-          </div>
-
-
-        </div>
-        ";
-
-      empleados($conex);
       break;
 
 

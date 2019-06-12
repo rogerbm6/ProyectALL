@@ -32,7 +32,6 @@ if (mysqli_num_rows($logi) == 1){
 		header("Location:inicio/index.php");
 
 	} else{
-		echo "nop";
 		header("Location:index.html");
 		exit();
 	}

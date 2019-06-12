@@ -407,6 +407,8 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
           mysqli_query($con, "update empleados set nombre = '".trim($_POST["nombre"])."', direccion= '".trim($_POST["direccion"])."', dni = '".trim($_POST["dni"])."', email = '".trim($_POST["email"])."', telefono = '".trim($_POST["telefono"])."',
             passwords = '".trim(md5($_POST["passwords"]))."'   where idEmpleado = ".$_POST["idEmpleado"]."");
 
+            move_uploaded_file($_FILES['foto']['tmp_name'],"../../images/emple/emp_".$_POST["idEmpleado"].".jpeg");
+
           header("Location:index.php?menu=empleados");
 
         }
@@ -415,8 +417,10 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
           $query =  "insert into empleados(direccion, dni, nombre, email, passwords, telefono) values('".$_POST["direccion"]."', '".$_POST["dni"]."','".$_POST["nombre"]."' , '".$_POST["email"]."' ,'".$_POST["passwords"]."','".$_POST["telefono"]."' )";
 
-
           mysqli_query($con, $query);
+
+          $foto = mysqli_insert_id($con);
+		      move_uploaded_file($_FILES['foto']['tmp_name'],"../../images/emple/emp_".$foto.".jpeg");
 
           header("Location:index.php?menu=empleados");
 
@@ -426,19 +430,24 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
           mysqli_query($con, "delete from empleados where idEmpleado = ".$_GET["idEmpleado"]." ;");
 
+          if(file_exists("../../images/emple/emp_".$_REQUEST["idEmpleado"].".jpeg")){
+      			      unlink("../../images/emple/emp_".$_REQUEST["idEmpleado"].".jpeg");
+      		}
+
           header("Location:index.php?menu=empleados");
 
         }
         if ($crud == "insertarpe") {
 
-
-
-          $query =  "insert into pedidos(TlfCont, fechahora, nombreCont, idEmpleado, fecha, hora) values('".$_POST["TlfCont"]."', now(), '".$_POST["nombreCont"]."' ,(select idEmpleado from empleados where nombre='".$_SESSION["usuario"]."'), '".$_POST["fecha"]."' ,'".$_POST["hora"]."')";
-
+          $query =  "insert into pedidos(TlfCont, fechahora, nombreCont, idEmpleado, fecha, hora) values('".$_POST["TlfCont"]."', now(), '".$_POST["nombreCont"]."' ,(select idEmpleado from empleados where nombre='".$_SESSION["usuario"]."'), '".$_POST["fecha"]."' ,'".$_POST["hora"]."');";
 
           mysqli_query($con, $query);
+          $ide = mysqli_insert_id($con);
 
-          header("Location:index.php?menu=pedidos");
+          $querys="insert into solicitan(idPedido,idComida, cantidad) values(".$ide.", ".$_POST["idComida"].", ".$_POST["cantidad"].")";
+          mysqli_query($con,$querys);
+
+          //header("Location:index.php?menu=pedidos");
 
         }
 
@@ -462,8 +471,14 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
 
       <div class='row'>
-        <div class='col-3'>
-
+        <div class='col-3 border'>
+          ";
+            if(file_exists("../../images/emple/emp_".$registro["idEmpleado"].".jpeg")){
+              ?>
+              <img src="../../images/emple/emp_<?php echo $registro["idEmpleado"]; ?>.jpeg" class='img-rounded img-fluid'/>
+            <?php
+            }
+      echo "
         </div>
         <div class='col-9'>
         <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
@@ -532,6 +547,18 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
                   <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
                 </div>
                 <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' value=".$registro["passwords"]." >
+              </div>
+
+              <br>
+
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroupFileAddon01'>Foto</span>
+                </div>
+                <div class='custom-file'>
+                  <input type='file' class='custom-file-input' id='inputGroupFile01' aria-describedby='inputGroupFileAddon01' name='foto'>
+                  <label class='custom-file-label' for='inputGroupFile01'> Elige la foto</label>
+                </div>
               </div>
 
               <br>
@@ -554,89 +581,178 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
 
 
-    /*function pedidos($con){
+    function pedidos($con){
 
-      $pedidos = mysqli_query($con,"SELECT * FROM pedidos left join ");
+      $pedidos = mysqli_query($con,"SELECT *
+        FROM pedidos order by idPedido desc");
+      $platos = mysqli_query($con,"SELECT * FROM comidas");
+
 
     while($registro = mysqli_fetch_array($pedidos)){
-      $ident = "a".$registro["idEmpleado"];
+      $ident = "a".$registro["idPedido"];
+      $idee=$registro["idPedido"];
       echo "
       <div class='jumbotron bg-secondary'>
 
-      <div class='row'>
-        <div class='col-3'>
+        <div class='row'>
+          <div class='col-6'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombreCont"]."</h1>
+          </div>
+          <div class='col-6'>
+            <h1 class='display-4'>Tlf: ".$registro["TlfCont"]."</h1>
+          </div>
+        </div>
 
+        <div class='row'>
+          <div class='col-6'>
+            <h3>Fecha: ".$registro["fecha"]."</h3>
+          </div>
+          <div class='col-6'>
+            <h3>Hora: ".$registro["hora"]."</h3>
+          </div>
         </div>
-        <div class='col-9'>
-        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-        <h1>Dni: ".$registro["dni"]."</h1>
-        <p class='lead'>".$registro["direccion"]."</p>
-        <p class='lead'>".$registro["email"]."</p>
-        <p class='lead'>".$registro["telefono"]."</p>
-        </div>
-      </div>
+        <div class='row'>
+          <div class='col-6'>
+
+
+
+        <table class='table table-sm'>
+          <thead>
+            <tr>
+              <th scope='col'>Precio bebida</th>
+              <th scope='col'>Bebida</th>
+              <th scope='col'>Cantidad</th>
+            </tr>
+          </thead>
+          <tbody>
+            ";
+
+          $pedi2 = mysqli_query($con,"SELECT al.precio 'prea', sa.cantidad 'can',
+           al.nombre 'alm'
+            FROM pedidos pe join salen sa on pe.idPedido=sa.idPedido  join almacen al on al.idAlmacen=sa.idAlmacen
+            where pe.idPedido= ".$idee."");
+            while($registros2 = mysqli_fetch_array($pedi2)){
+
+              echo "<tr>";
+                      if (isset($registros2["prea"])) {
+                        echo "<td>".$registros2["prea"]."</td>";
+                      }else {echo "<td>NO</td>";}
+                      if (isset($registros2["alm"])) {
+                        echo "<td>".$registros2["alm"]."</td>";
+                      }else echo "<td>NO</td>";
+                      echo "<td>".$registros2["can"]."</td>";
+              echo "</tr>";
+                      }
+      echo "
+          </tbody>
+          </table>
+          </div>
+          <div class='col-6'>
+          <table class='table table-sm'>
+            <thead>
+              <tr>
+                <th scope='col'>Precio platos</th>
+                <th scope='col'>Plato</th>
+                <th scope='col'>Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+          ";
+
+          $pedi3 = mysqli_query($con,"SELECT co.precio 'pre', so.cantidad 'can',
+            co.nombre 'com'
+            FROM pedidos pe  join solicitan so on pe.idPedido =so.idPedido  join comidas co on co.idComida=so.idComida            where pe.idPedido= ".$idee."");
+            while($registros = mysqli_fetch_array($pedi3)){
+
+              echo "<tr>";
+                      if (isset($registros["pre"])) {
+                        echo "<td>".$registros["pre"]."</td>";
+                      }else {echo "<td>NO</td>";}
+                      if (isset($registros["com"])) {
+                        echo "<td>".$registros["com"]."</td>";
+                      }else echo "<td>NO</td>";
+                      echo "<td>".$registros["can"]."</td>";
+              echo "</tr>";
+                      }
+
+
+
+
+    echo "
+              </tbody>
+            </table>
+          </div>
+
+        </div>";
+
+
+
+
+echo "
+
+
+        <p class='lead'>Total: ".$registro["importe"]."</p>
+
+
         <hr>
-        <a href='index.php?menu=empleados&accion=borraremp&idEmpleado=".$registro["idEmpleado"]."' class='btn btn-danger'>Borrar</a>
+        <a href='index.php?menu=pedidos&accion=borrarped&idPedido=".$registro["idPedido"]."' class='btn btn-danger'>Borrar</a>
 
 
         <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar</button>
         <div class='collapse' id='".$ident."'>
           <div class='card card-body'>
             <form method='POST' enctype='multipart/form-data' action='index.php?menu=empleados'>
-              <input type='hidden' name='accion' value='actualizaremp' />
-              <input type='hidden' name='idEmpleado' value='".$registro["idEmpleado"]."'/>
+              <input type='hidden' name='accion' value='actualizarped' />
+              <input type='hidden' name='idPedido' value='".$registro["idPedido"]."'/>
 
-              <div class='input-group mb-3'>
-                <div class='input-group-prepend'>
-                  <span class='input-group-text' id='inputGroup-sizing-default'>Nombre</span>
+                <div class='row'>
+                  <div class='input-group mb-3'>
+                   <div class='col-3'>
+                     <div class='input-group-prepend'>
+                       <span class='input-group-text' id='inputGroup-sizing-default'>Nombre contacto </span>
+                     </div>
+                   </div>
+                   <div class='col-9'>
+                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombreCont' value='".$registro["nombreCont"]."'>
+                   </div>
+                 </div>
+
+
+                 <div class='input-group mb-3'>
+                   <div class='col-3'>
+                     <div class='input-group-prepend'>
+                       <span class='input-group-text' id='inputGroup-sizing-default'>Telefono Contacto </span>
+                     </div>
+                   </div>
+                   <div class='col-9'>
+                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}' value='".$registro["TlfCont"]."'>
+                   </div>
+                 </div>
+
+                 <div class='input-group mb-3'>
+                   <div class='col-3'>
+                     <div class='input-group-prepend'>
+                       <span class='input-group-text' id='inputGroup-sizing-default'>Fecha</span>
+                     </div>
+                   </div>
+                   <div class='col-9'>
+                     <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' value='".$registro["fecha"]."'>
+                   </div>
+                 </div>
+
+                 <div class='input-group mb-3'>
+                   <div class='col-3'>
+                     <div class='input-group-prepend'>
+                       <span class='input-group-text' id='inputGroup-sizing-default'>Hora</span>
+                     </div>
+                   </div>
+                   <div class='col-9'>
+                       <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora' value='".$registro["hora"]."'>
+                   </div>
+                 </div>
+
+
                 </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre' value=".$registro["nombre"].">
-              </div>
-              <br>
-              <div class='input-group mb-3'>
-                <div class='input-group-prepend'>
-                  <span class='input-group-text' id='inputGroup-sizing-default'>Direccion</span>
-                </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='direccion' value=".$registro["direccion"].">
-              </div>
-
-              <br>
-
-              <div class='input-group mb-3'>
-                <div class='input-group-prepend'>
-                  <span class='input-group-text' id='inputGroup-sizing-default'>Dni</span>
-                </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='dni' value=".$registro["dni"]." pattern='[0-9]{8}[A-Za-z]{1}'>
-              </div>
-
-              <br>
-
-              <div class='input-group mb-3'>
-                <div class='input-group-prepend'>
-                  <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
-                </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email' value=".$registro["email"].">
-              </div>
-
-              <br>
-
-              <div class='input-group mb-3'>
-                <div class='input-group-prepend'>
-                  <span class='input-group-text' id='inputGroup-sizing-default'>Telefono</span>
-                </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='telefono' value=".$registro["telefono"]." pattern='[0-9]{9}'>
-              </div>
-
-              <br>
-
-              <div class='input-group mb-3'>
-                <div class='input-group-prepend'>
-                  <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
-                </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' value=".$registro["passwords"]." >
-              </div>
-
-              <br>
 
 
 
@@ -646,23 +762,123 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
             </form>
           </div>
         </div>
+</div>
 
-
-
-
-      </div>";
+";
         }
-    }*/
+    }
+
+
+    function nombrespe($con){
+
+      $platos = mysqli_query($con,"SELECT * FROM comidas");
+
+      echo "
+       <div class='jumbotron'>
+         <h1 class='display-2'>Pedidos</h1>
+         <p class='lead'>Configuracion de los pedidos</p>
+         <br>
+         <hr class='m-y-md'>
+         <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#pedido' aria-expanded='false' aria-controls='pedido'>Nuevo pedido</button>
+         <div class='collapse' id='pedido'>
+           <div class='card card-body'>
+             <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+               <input type='hidden' name='accion' value='insertarpe' />
+
+               <div class='row'>
+                 <div class='input-group mb-3'>
+                  <div class='col-3'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Nombre contacto </span>
+                    </div>
+                  </div>
+                  <div class='col-9'>
+                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombreCont'>
+                  </div>
+                </div>
+
+
+                <div class='input-group mb-3'>
+                  <div class='col-3'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Telefono Contacto </span>
+                    </div>
+                  </div>
+                  <div class='col-9'>
+                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}'>
+                  </div>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='col-3'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Fecha</span>
+                    </div>
+                  </div>
+                  <div class='col-9'>
+                    <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
+                  </div>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='col-3'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Hora</span>
+                    </div>
+                  </div>
+                  <div class='col-9'>
+                      <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora'>
+                  </div>
+                </div>
+
+
+                <div class='input-group mb-3'>
+                  <div class='col-3'>
+                    <div class='input-group-prepend'>
+                      <label class='input-group-text' for='idComida'>Plato</label>
+                    </div>
+                  </div>
+                  <div class='col-9'>
+                    <select class='custom-select' name='idComida'>";
+
+        while($registro = mysqli_fetch_array($platos)){
+        echo "         <option value='".$registro["idComida"]."'>".$registro["nombre"]."</option>
+                      ";
+                    }
+
+         echo "     </select>
+                  </div>
+                </div>
+
+                <div class='input-group mb-3'>
+                  <div class='col-3'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Cantidad</span>
+                    </div>
+                  </div>
+                  <div class='col-9'>
+                    <input type='number' class='form-control' name='cantidad'>
+                  </div>
+
+                </div>
+
+               </div>
+
+
+               <button type='sumbit' class='btn btn-primary'>Insertar</button>
+
+
+             </form>
+           </div>
+         </div>
+
+
+       </div>
+       ";
 
 
 
-
-
-
-
-
-
-
+    }
 
 
 ?>
