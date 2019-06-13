@@ -23,14 +23,14 @@ $conex = connectdb("caminodejose");
   <?php
   switch($menu){
       case "index":
-      echo "<h1 class='display-3'>Inicio</h1>";
+      echo "<h1 class='display-4'>Inicio</h1>";
       echo "<hr>";
       break;
 
       case "comidas":
        echo "
         <div class='jumbotron'>
-          <h1 class='display-2'>Platos</h1>
+          <h1 class='display-4'>Platos</h1>
           <p class='lead'>Aca se pueden administrar todo lo que se prepara en la cocina</p>
           <br>
           <hr class='m-y-md'>
@@ -95,7 +95,7 @@ $conex = connectdb("caminodejose");
       case "almacen":
        echo "
         <div class='jumbotron'>
-          <h1 class='display-2'>Almacen</h1>
+          <h1 class='display-4'>Almacen</h1>
           <p class='lead'>Puedes administrar tu inventario</p>
           <br>
           <hr class='m-y-md'>
@@ -179,7 +179,7 @@ $conex = connectdb("caminodejose");
       case "empleados":
        echo "
         <div class='jumbotron'>
-          <h1 class='display-2'>Empleados</h1>
+          <h1 class='display-4'>Empleados</h1>
           <p class='lead'>Configuracion de usuarios</p>
           <br>
           <hr class='m-y-md'>

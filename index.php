@@ -19,14 +19,14 @@ if(isset($_GET["menu"])){
 <?php
 switch($menu){
     case "index":   // jejjeje
-    echo "<h1 class='display-3'>Inicio</h1>";
+    echo "<h1 class='display-4'>Inicio</h1>";
     echo "<hr>";
     break;
 
     case "tapas":
     echo "
       <div class='jumbotron'>
-        <h1 class='display-2'>Pasión por el bocado</h1>
+        <h1 class='display-4'>Pasión por el bocado</h1>
         <p class='lead'>Las 'tapas'...</p>
         <br>
         <p class='lead'>...forman parte importante de la cultura gastronómica española. Son sencillas, rápidas y el mejor acompañamiento para un buen vino  </p>
@@ -39,7 +39,7 @@ switch($menu){
     case "manjares":
     echo "
       <div class='jumbotron'>
-        <h1 class='display-2'>Pequeños Manjares</h1>
+        <h1 class='display-4'>Pequeños Manjares</h1>
         <hr class='m-y-md'>
       </div>
       ";
@@ -49,7 +49,7 @@ switch($menu){
     case "picar":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-2'>Nuestro rincón favorito</h1>
+      <h1 class='display-4'>Nuestro rincón favorito</h1>
       <hr class='m-y-md'>
       <p class='lead'>Quesos de leche de cabra no pasteurizada</p>
 
@@ -61,7 +61,7 @@ switch($menu){
     case "ensaladas":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-2'>Ensaladas frescas de la tierra</h1>
+      <h1 class='display-4'>Ensaladas frescas de la tierra</h1>
       <hr class='m-y-md'>
     </div>";
 
@@ -71,7 +71,7 @@ switch($menu){
     case "vegetariano":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-2'>El rincón vegetariano</h1>
+      <h1 class='display-4'>El rincón vegetariano</h1>
       <hr class='m-y-md'>
       <p class='lead'>Tenemos incorporado en este menú algunos platos vegetarianos.</p>
       <br>
@@ -84,7 +84,7 @@ switch($menu){
     case "fuertes":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-2'>Carne, Mar y Más</h1>
+      <h1 class='display-4'>Carne, Mar y Más</h1>
       <hr class='m-y-md'>
       <p class='lead'>Nosotros usamos exclusivamente liquido de oro español!. Es un coste que asumimos con gusto para darle una calidad excepcional al producto</p>
       <br>
@@ -105,7 +105,7 @@ switch($menu){
     case "postres":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-2'>Al final</h1>
+      <h1 class='display-4'>Al final</h1>
       <hr class='m-y-md'>
     </div>";
 
@@ -115,7 +115,7 @@ switch($menu){
     case "bebidas":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-2'>Refrescantes</h1>
+      <h1 class='display-4'>Refrescantes</h1>
       <hr class='m-y-md'>
     </div>";
 

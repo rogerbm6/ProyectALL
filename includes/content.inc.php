@@ -170,7 +170,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
     function admin_comida($con){
 
-        $comidas = mysqli_query($con,"SELECT * FROM comidas");
+        $comidas = mysqli_query($con,"SELECT * FROM comidas ORDER BY idComida DESC");
 
 
     while($registro = mysqli_fetch_array($comidas)){
@@ -248,7 +248,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
     function admin_almacen($con){
 
-        $almacen = mysqli_query($con,"SELECT * FROM almacen");
+        $almacen = mysqli_query($con,"SELECT * FROM almacen ORDER BY idAlmacen DESC");
 
     while($registro = mysqli_fetch_array($almacen)){
       $ident = "a".$registro["idAlmacen"];
@@ -447,7 +447,47 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
           $querys="insert into solicitan(idPedido,idComida, cantidad) values(".$ide.", ".$_POST["idComida"].", ".$_POST["cantidad"].")";
           mysqli_query($con,$querys);
 
-          //header("Location:index.php?menu=pedidos");
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "actualizarped") {
+
+          mysqli_query($con, "update pedidos set TlfCont = '".trim($_POST["TlfCont"])."', nombreCont= '".trim($_POST["nombreCont"])."', fecha = '".trim($_POST["fecha"])."', hora = '".trim($_POST["hora"])."' where idPedido = ".$_POST["idPedido"]."");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "borrarped") {
+
+          mysqli_query($con, "delete from pedidos where idPedido = ".$_GET["idPedido"].";");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "borrarpla") {
+
+          mysqli_query($con, "delete from solicitan where idPedido = ".$_GET["idPedido"]." and idComida=".$_GET["idComida"].";");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "actualizarplatopedido") {
+
+          mysqli_query($con, "update solicitan set cantidad = '".trim($_POST["cantidad"])."' where idPedido = ".$_POST["idPedido"]." and idComida=".$_POST["idComida"]."");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "insertarplatopedido") {
+
+          mysqli_query($con, "insert into solicitan(idPedido,idComida, cantidad) values(".$_POST["idPedido"].",".$_POST["idComida"].",".$_POST["cantidad"].")");
+
+          header("Location:index.php?menu=pedidos");
 
         }
 
@@ -463,7 +503,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
     function empleados($con){
 
-      $empleados = mysqli_query($con,"SELECT * FROM empleados");
+      $empleados = mysqli_query($con,"SELECT * FROM empleados ORDER BY idEmpleado DESC");
 
     while($registro = mysqli_fetch_array($empleados)){
       $ident = "a".$registro["idEmpleado"];
@@ -471,7 +511,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
 
       <div class='row'>
-        <div class='col-3 border'>
+        <div class='col-md-3 col-sm-12 border'>
           ";
             if(file_exists("../../images/emple/emp_".$registro["idEmpleado"].".jpeg")){
               ?>
@@ -480,7 +520,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
             }
       echo "
         </div>
-        <div class='col-9'>
+        <div class='col-md-9 col-sm-12'>
         <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
         <h1>Dni: ".$registro["dni"]."</h1>
         <p class='lead'>".$registro["direccion"]."</p>
@@ -584,35 +624,37 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
     function pedidos($con){
 
       $pedidos = mysqli_query($con,"SELECT *
-        FROM pedidos order by idPedido desc");
+        FROM pedidos pe left join empleados em on pe.idEmpleado=em.idEmpleado  order by idPedido desc");
       $platos = mysqli_query($con,"SELECT * FROM comidas");
 
 
     while($registro = mysqli_fetch_array($pedidos)){
       $ident = "a".$registro["idPedido"];
+      $identif = "b".$registro["idPedido"];
+      $identib = "c".$registro["idPedido"];
       $idee=$registro["idPedido"];
       echo "
       <div class='jumbotron bg-secondary'>
 
         <div class='row'>
-          <div class='col-6'>
+          <div class='col-md-6 col-sm-12'>
             <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombreCont"]."</h1>
           </div>
-          <div class='col-6'>
+          <div class='col-md-6 col-sm-12'>
             <h1 class='display-4'>Tlf: ".$registro["TlfCont"]."</h1>
           </div>
         </div>
 
         <div class='row'>
-          <div class='col-6'>
+          <div class='col-md-6 col-sm-12'>
             <h3>Fecha: ".$registro["fecha"]."</h3>
           </div>
-          <div class='col-6'>
+          <div class='col-md-6 col-sm-12'>
             <h3>Hora: ".$registro["hora"]."</h3>
           </div>
         </div>
         <div class='row'>
-          <div class='col-6'>
+          <div class='col-md-6 col-sm-12'>
 
 
 
@@ -647,7 +689,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
           </tbody>
           </table>
           </div>
-          <div class='col-6'>
+          <div class='col-md-6 col-sm-12'>
           <table class='table table-sm'>
             <thead>
               <tr>
@@ -690,18 +732,267 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
 echo "
 
+        <div class='row'>
+          <div class='col-6'>
+            <p class='lead'>Total: ".$registro["importe"]."</p>
+          </div>
+          <div class='col-6'>
+            <p class='lead'>Hecha por: ".$registro["nombre"]."</p>
+          </div>
+        </div>
 
-        <p class='lead'>Total: ".$registro["importe"]."</p>
 
 
         <hr>
-        <a href='index.php?menu=pedidos&accion=borrarped&idPedido=".$registro["idPedido"]."' class='btn btn-danger'>Borrar</a>
+        <a href='index.php?menu=pedidos&accion=borrarped&idPedido=".$registro["idPedido"]."' class='btn btn-danger flex-sm-nowrap'>Borrar</a>
 
 
-        <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar</button>
+        <button class='btn btn-primary flex-sm-nowrap' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar</button>
+
+        <button type='button' class='btn btn-success flex-sm-nowrap' data-toggle='modal' data-target='#".$identif."'>
+          Platos
+        </button>
+
+        <button type='button' class='btn btn-success' data-toggle='modal' data-target='#".$identib."'>
+          Bebidas
+        </button>
+
+
+        <div class='modal fade' id=".$identib." tabindex='-1' role='dialog' aria-labelledby=".$identib." aria-hidden='true'>
+          <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalLabel'>Administrar Bebidas</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <div class='modal-body'>
+
+                <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+                  <input type='hidden' name='accion' value='actualizarped' />
+                  <input type='hidden' name='idPedido' value='".$registro["idPedido"]."'/>";
+                  echo "<div class='row'>
+                          <div class='col-12'>
+                            <ul class='list-group'>";
+
+                  $pedial = mysqli_query($con,"SELECT al.precio 'pre', sa.cantidad 'can',
+                    al.nombre 'alm', al.idAlmacen 'idal', pe.idPedido 'idpe'
+                    FROM pedidos pe  join salen sa on pe.idPedido =sa.idPedido  join almacen al on al.idAlmacen=sa.idAlmacen   where pe.idPedido= ".$idee."");
+                    while($regi2 = mysqli_fetch_array($pedial)){
+
+
+                        echo "
+                              <div class='row'>
+                                <div class='col-md-8 col-sm-12'>
+                                  <li class='list-group-item d-flex justify-content-between align-items-center'>
+                                  ".$regi2["alm"]." -- ".$mul = $regi2["pre"]*$regi2["can"]."
+                                <a href='index.php?menu=pedidos&accion=borrarbe&idPedido=".$idee."&idAlmacen=".$regi2["idal"]."' class='btn btn-danger'>Borrar</a>
+                                  </li>
+                                </div>
+                                <div class='col-md-4 col-sm-12'>
+                                  <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+                                    <input type='hidden' name='accion' value='actualizarplatobebida' />
+                                    <input type='hidden' name='idPedido' value='".$regi2["idpe"]."'/>
+                                    <input type='hidden' name='idAlmacen' value='".$regi2["idal"]."'/>
+                                    <div class='input-group py-3'>
+                                      <input type='number' class='form-control' aria-describedby='basic-addon1' name='cantidad' value='".$regi2["can"]."' >
+                                      <div class='input-group-append'>
+                                        <button class='btn btn-success' type='sumbit'>Guardar</button>
+                                      </div>
+
+                                    </div>
+                                    </div>
+                                  </form>
+                                </div>
+
+
+                              ";
+
+
+                              }
+
+
+                              echo "<label for='platos'>Insertar bebida</label>
+                              <div class='row'>
+                                      <div class='col-md-8 col-sm-12'>
+                                        <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+                                          <input type='hidden' name='accion' value='insertarplatobebida' />
+                                          <input type='hidden' name='idPedido' value='".$idee."'/>
+                                          <div class='row'>
+                                            <div class='col-md-12 col-sm-12'>
+                                            <div class='form-group'>
+
+                                              <select class='form-control' id='bebidas' name='idAlmacen'>";
+
+                                          $pedial2 = mysqli_query($con,"SELECT nombre, idAlmacen
+                                            FROM almacen  ");
+                                            while($registros3 = mysqli_fetch_array($pedial2)){
+                                              echo "<option value=".$registros3["idAlmacen"].">".$registros3["nombre"]."</option>";
+                                            }
+                                                echo "
+                                              </select>
+                                              </div>
+                                            </div>
+                                            <div class='col-md-12 col-sm-12'>
+                                            <div class='form-group'>
+                                            <div class='input-group py-3'>
+                                              <input type='number' class='form-control' aria-describedby='basic-addon1' name='cantidad' value='1'>
+                                              <div class='input-group-append'>
+                                                <button class='btn btn-success d-inline' type='sumbit'>Guardar</button>
+                                              </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </form>
+                                      </div>
+                                    </div>
+
+                              </ul>
+                            </div>
+                          </div>";
+
+
+
+
+
+
+
+echo "
+                </form>
+
+
+
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+        <div class='modal fade' id=".$identif." tabindex='-1' role='dialog' aria-labelledby=".$identif." aria-hidden='true'>
+          <div class='modal-dialog' role='document'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h5 class='modal-title' id='exampleModalLabel'>Administrar Platos</h5>
+                <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                  <span aria-hidden='true'>&times;</span>
+                </button>
+              </div>
+              <div class='modal-body'>
+
+                <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+                  <input type='hidden' name='accion' value='actualizarped' />
+                  <input type='hidden' name='idPedido' value='".$registro["idPedido"]."'/>";
+                  echo "<div class='row'>
+                          <div class='col-12'>
+                            <ul class='list-group'>";
+
+                  $pedi4 = mysqli_query($con,"SELECT co.precio 'pre', so.cantidad 'can',
+                    co.nombre 'com', co.idComida 'idco', pe.idPedido 'idpe'
+                    FROM pedidos pe  join solicitan so on pe.idPedido =so.idPedido  join comidas co on co.idComida=so.idComida   where pe.idPedido= ".$idee."");
+                    while($registros2 = mysqli_fetch_array($pedi4)){
+
+
+                        echo "
+                              <div class='row'>
+                                <div class='col-md-8 col-sm-12'>
+                                  <li class='list-group-item d-flex justify-content-between align-items-center'>
+                                  ".$registros2["com"]." -- ".$mul = $registros2["pre"]*$registros2["can"]."
+                                <a href='index.php?menu=pedidos&accion=borrarpla&idPedido=".$idee."&idComida=".$registros2["idco"]."' class='btn btn-danger'>Borrar</a>
+                                  </li>
+                                </div>
+                                <div class='col-md-4 col-sm-12'>
+                                  <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+                                    <input type='hidden' name='accion' value='actualizarplatopedido' />
+                                    <input type='hidden' name='idPedido' value='".$registros2["idpe"]."'/>
+                                    <input type='hidden' name='idComida' value='".$registros2["idco"]."'/>
+                                    <div class='input-group py-3'>
+                                      <input type='number' class='form-control' aria-describedby='basic-addon1' name='cantidad' value='".$registros2["can"]."' >
+                                      <div class='input-group-append'>
+                                        <button class='btn btn-success' type='sumbit'>Guardar</button>
+                                      </div>
+
+                                    </div>
+                                    </div>
+                                  </form>
+                                </div>
+
+
+                              ";
+
+
+                              }
+
+
+                              echo "<label for='platos'>Insertar plato</label>
+                              <div class='row'>
+                                      <div class='col-md-8 col-sm-12'>
+                                        <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
+                                          <input type='hidden' name='accion' value='insertarplatopedido' />
+                                          <input type='hidden' name='idPedido' value='".$idee."'/>
+                                          <div class='row'>
+                                            <div class='col-md-12 col-sm-12'>
+                                            <div class='form-group'>
+
+                                              <select class='form-control' id='platos' name='idComida'>";
+
+                                          $pedi5 = mysqli_query($con,"SELECT nombre, idComida
+                                            FROM comidas");
+                                            while($registros3 = mysqli_fetch_array($pedi5)){
+                                              echo "<option value=".$registros3["idComida"].">".$registros3["nombre"]."</option>";
+                                            }
+                                                echo "
+                                              </select>
+                                              </div>
+                                            </div>
+                                            <div class='col-md-12 col-sm-12'>
+                                            <div class='form-group'>
+                                            <div class='input-group py-3'>
+                                              <input type='number' class='form-control' aria-describedby='basic-addon1' name='cantidad' value='1'>
+                                              <div class='input-group-append'>
+                                                <button class='btn btn-success d-inline' type='sumbit'>Guardar</button>
+                                              </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                            </div>
+                                        </form>
+                                      </div>
+                                    </div>
+
+                              </ul>
+                            </div>
+                          </div>";
+
+
+
+
+
+
+
+echo "
+                </form>
+
+
+
+              </div>
+              <div class='modal-footer'>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cerrar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div class='collapse' id='".$ident."'>
           <div class='card card-body'>
-            <form method='POST' enctype='multipart/form-data' action='index.php?menu=empleados'>
+            <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
               <input type='hidden' name='accion' value='actualizarped' />
               <input type='hidden' name='idPedido' value='".$registro["idPedido"]."'/>
 
@@ -713,7 +1004,7 @@ echo "
                      </div>
                    </div>
                    <div class='col-9'>
-                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombreCont' value='".$registro["nombreCont"]."'>
+                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombreCont' value=".$registro["nombreCont"].">
                    </div>
                  </div>
 
@@ -725,7 +1016,7 @@ echo "
                      </div>
                    </div>
                    <div class='col-9'>
-                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}' value='".$registro["TlfCont"]."'>
+                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}' value=".$registro["TlfCont"].">
                    </div>
                  </div>
 
@@ -736,7 +1027,7 @@ echo "
                      </div>
                    </div>
                    <div class='col-9'>
-                     <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' value='".$registro["fecha"]."'>
+                     <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}' value=".$registro["fecha"].">
                    </div>
                  </div>
 
@@ -747,14 +1038,12 @@ echo "
                      </div>
                    </div>
                    <div class='col-9'>
-                       <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora' value='".$registro["hora"]."'>
+                       <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora' value=".$registro["hora"].">
                    </div>
                  </div>
 
 
                 </div>
-
-
 
 
               <button type='sumbit' class='btn btn-primary'>Aceptar</button>
@@ -775,7 +1064,7 @@ echo "
 
       echo "
        <div class='jumbotron'>
-         <h1 class='display-2'>Pedidos</h1>
+         <h1 class='display-4'>Pedidos</h1>
          <p class='lead'>Configuracion de los pedidos</p>
          <br>
          <hr class='m-y-md'>
@@ -787,58 +1076,58 @@ echo "
 
                <div class='row'>
                  <div class='input-group mb-3'>
-                  <div class='col-3'>
+                  <div class='col-md-3'>
                     <div class='input-group-prepend'>
                       <span class='input-group-text' id='inputGroup-sizing-default'>Nombre contacto </span>
                     </div>
                   </div>
-                  <div class='col-9'>
+                  <div class='col-md-9'>
                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombreCont'>
                   </div>
                 </div>
 
 
                 <div class='input-group mb-3'>
-                  <div class='col-3'>
+                  <div class='col-md-3'>
                     <div class='input-group-prepend'>
                       <span class='input-group-text' id='inputGroup-sizing-default'>Telefono Contacto </span>
                     </div>
                   </div>
-                  <div class='col-9'>
+                  <div class='col-md-9'>
                     <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}'>
                   </div>
                 </div>
 
                 <div class='input-group mb-3'>
-                  <div class='col-3'>
+                  <div class='col-md-3'>
                     <div class='input-group-prepend'>
                       <span class='input-group-text' id='inputGroup-sizing-default'>Fecha</span>
                     </div>
                   </div>
-                  <div class='col-9'>
+                  <div class='col-md-9'>
                     <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' required pattern='[0-9]{4}-[0-9]{2}-[0-9]{2}'>
                   </div>
                 </div>
 
                 <div class='input-group mb-3'>
-                  <div class='col-3'>
+                  <div class='col-md-3'>
                     <div class='input-group-prepend'>
                       <span class='input-group-text' id='inputGroup-sizing-default'>Hora</span>
                     </div>
                   </div>
-                  <div class='col-9'>
+                  <div class='col-md-9'>
                       <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora'>
                   </div>
                 </div>
 
 
                 <div class='input-group mb-3'>
-                  <div class='col-3'>
+                  <div class='col-md-3'>
                     <div class='input-group-prepend'>
                       <label class='input-group-text' for='idComida'>Plato</label>
                     </div>
                   </div>
-                  <div class='col-9'>
+                  <div class='col-md-9'>
                     <select class='custom-select' name='idComida'>";
 
         while($registro = mysqli_fetch_array($platos)){
@@ -851,12 +1140,12 @@ echo "
                 </div>
 
                 <div class='input-group mb-3'>
-                  <div class='col-3'>
+                  <div class='col-md-3'>
                     <div class='input-group-prepend'>
                       <span class='input-group-text' id='inputGroup-sizing-default'>Cantidad</span>
                     </div>
                   </div>
-                  <div class='col-9'>
+                  <div class='col-md-9'>
                     <input type='number' class='form-control' name='cantidad'>
                   </div>
 

@@ -30,39 +30,39 @@ function headere($titulo)
             <span class="navbar-toggler-icon"></span>
 
           </button>
-          <a class="navbar-brand" href="index.php">Inicio</a>
+          <a class="navbar-brand text-light" href="index.php">Inicio</a>
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-md-0">
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=manjares">Manjares <span class="sr-only">(current)</span></a>
+                <a class="nav-link text-light" href="index.php?menu=manjares">Manjares <span class="sr-only">(current)</span></a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=picar">Picar</a>
+                <a class="nav-link text-light" href="index.php?menu=picar">Picar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=tapas">Tapas</a>
+                <a class="nav-link text-light" href="index.php?menu=tapas">Tapas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=ensaladas">Ensaladas</a>
+                <a class="nav-link text-light" href="index.php?menu=ensaladas">Ensaladas</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=vegetariano">Vegetariano</a>
+                <a class="nav-link text-light" href="index.php?menu=vegetariano">Vegetariano</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=fuertes">Fuertes</a>
+                <a class="nav-link text-light" href="index.php?menu=fuertes">Fuertes</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=postres">Postres</a>
+                <a class="nav-link text-light" href="index.php?menu=postres">Postres</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php?menu=bebidas">Bebidas</a>
+                <a class="nav-link text-light" href="index.php?menu=bebidas">Bebidas</a>
               </li>
 
             </ul>
             <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." aria-label="Search">
-              <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Buscar</button>
+              <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
             </form>
 
           </div>
@@ -153,27 +153,27 @@ function headerlogin($titulo)
           <span class="navbar-toggler-icon"></span>
 
         </button>
-        <a class="navbar-brand" href="index.php">Inicio</a>
+        <a class="navbar-brand text-light" href="index.php">Inicio</a>
 
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
           <ul class="navbar-nav mr-auto mt-2 mt-md-0">
             <li class="nav-item">
-              <a class="nav-link" href="index.php?menu=comidas">Comidas <span class="sr-only">(current)</span></a>
+              <a class="nav-link text-light" href="index.php?menu=comidas">Comidas <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?menu=almacen">Almacen</a>
+              <a class="nav-link text-light" href="index.php?menu=almacen">Almacen</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?menu=empleados">Empleados</a>
+              <a class="nav-link text-light" href="index.php?menu=empleados">Empleados</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?menu=pedidos">Pedidos</a>
+              <a class="nav-link text-light" href="index.php?menu=pedidos">Pedidos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?menu=reservas">Reservas</a>
+              <a class="nav-link text-light" href="index.php?menu=reservas">Reservas</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?menu=proveedores">Proveedores</a>
+              <a class="nav-link text-light" href="index.php?menu=proveedores">Proveedores</a>
             </li>
 
 
