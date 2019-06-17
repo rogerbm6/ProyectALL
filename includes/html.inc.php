@@ -21,8 +21,16 @@ function headere($titulo)
 
     <body class="bg-primary">
     <div class="container-fluid">
-      <div class="jumbotron">
-        <h1 class="display-1">El camino de Jose</h1>
+      <div class="jumbotron border">
+        <div class="row">
+          <div class="col-md-8 col-sm-12">
+            <img src="images/logo/logo.png" alt="logo" class="img-fluid">
+          </div>
+          <div class="col-md-2 col-sm-12">
+            <a class='btn btn-outline-light' href="admin/" type='button'>Iniciar sesion</a>
+          </div>
+        </div>
+
       </div>
       <nav>
         <div class="navbar navbar-expand-lg navbar-light ">
@@ -60,8 +68,9 @@ function headere($titulo)
               </li>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" method='POST' enctype='multipart/form-data' action='index.php?menu=index'>
+              <input type='hidden' name='buscar' value='busqueda' />
+              <input class="form-control mr-sm-2" type="text" placeholder="Buscar..." aria-label="Search" name="palabra">
               <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Buscar</button>
             </form>
 
@@ -86,23 +95,36 @@ function footer()
 
           <footer>
 
-            <div class="bg-dark navbar navbar-fixed-bottom pt-5">
-              <div class="container">
+            <div class="bg-dark ">
+              <div class="container-fluid" id='foo'>
                 <div class="row">
                   <div class="col-4">
                     <p class="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer posuere erat a ante.
+                      Información y contacto
+                    </p>
+                    <ul>
+                      <li>+34/622 899 210</li>
+                      <li>+34/629 068 551</li>
+                      <li>info@elcaminodejose.com</li>
+                    </ul>
+                  </div>
+                  <div class="col-4">
+                    <p class="lead" id='foo'>
+                      Dirección
+                    </p>
+                    <br>
+                    <p class="lead">
+                      Calle Risco Blanco, 79
                     </p>
                   </div>
                   <div class="col-4">
-                    <p class="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer posuere erat a ante.
+                    <p class="lead" id='foo'>
+                      Desarrollador
                     </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer posuere erat a ante.
-                    </p>
+                    <ul>
+                      <li>roggerbm6@gmail.com</li>
+                      <li>+34 689 46 90 53</li>
+                    </ul>
                   </div>
 
                 </div>
@@ -145,9 +167,16 @@ function headerlogin($titulo)
 
     <body class="bg-primary">
     <div class="container-fluid">
-      <div class="jumbotron">
-        <h1 class="display-1">El camino de Jose</h1>
-      </div>
+        <div class="jumbotron border">
+          <div class="row">
+            <div class="col-md-8 col-sm-12">
+              <img src="../../images/logo/logo.png" alt="logo" class="img-fluid">
+            </div>
+            <div class="col-md-2 col-sm-12">
+              <a class='btn btn-outline-light' href="logout.php" type='button'>Cerrar sesion</a>
+            </div>
+          </div>
+        </div>
       <div class="navbar navbar-expand-lg navbar-light ">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -172,10 +201,6 @@ function headerlogin($titulo)
             <li class="nav-item">
               <a class="nav-link text-light" href="index.php?menu=reservas">Reservas</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="index.php?menu=proveedores">Proveedores</a>
-            </li>
-
 
           </ul>
 
@@ -197,32 +222,45 @@ function footerlogin()
     ?>
         </div>
 
-          <footer>
+        <footer>
 
-            <div class="bg-dark navbar navbar-fixed-bottom pt-5">
-              <div class="container">
-                <div class="row">
-                  <div class="col-4">
-                    <p class="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer posuere erat a ante.
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer posuere erat a ante.
-                    </p>
-                  </div>
-                  <div class="col-4">
-                    <p class="lead">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Integer posuere erat a ante.
-                    </p>
-                  </div>
-
+          <div class="bg-dark ">
+            <div class="container-fluid" id='foo'>
+              <div class="row">
+                <div class="col-md-4 col-sm-12">
+                  <p class="lead">
+                    Información y contacto
+                  </p>
+                  <ul>
+                    <li>+34/622 899 210</li>
+                    <li>+34/629 068 551</li>
+                    <li>info@elcaminodejose.com</li>
+                  </ul>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <p class="lead" id='foo'>
+                    Dirección
+                  </p>
+                  <br>
+                  <p class="lead">
+                    Calle Risco Blanco, 79
+                  </p>
+                </div>
+                <div class="col-md-4 col-sm-12">
+                  <p class="lead" id='foo'>
+                    Desarrollador
+                  </p>
+                  <ul>
+                    <li>roggerbm6@gmail.com</li>
+                    <li>+34 689 46 90 53</li>
+                  </ul>
                 </div>
 
               </div>
+
             </div>
-          </footer>
+          </div>
+        </footer>
 
 
 

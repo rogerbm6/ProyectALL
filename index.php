@@ -1,7 +1,7 @@
 <?php
 include("includes/html.inc.php");
 include("includes/admindb.inc.php");
-include("includes/content.inc.php");
+include("includes/contenido.inc.php");
 
 $conex = connectdb("caminodejose");
 
@@ -18,9 +18,62 @@ if(isset($_GET["menu"])){
 
 <?php
 switch($menu){
-    case "index":   // jejjeje
-    echo "<h1 class='display-4'>Inicio</h1>";
-    echo "<hr>";
+    case "index":
+    ?>
+
+    <div class='jumbotron'>
+      <h1 class='display-4'>¡Bienvenidos a nuestro rincón!</h1>
+      <p class='lead'>Despues de recorrer un largo "camino" por tierras de la península ibérica, conociendo todos los secretos de nuestros
+      mayores, tradición, cultura, empezamos un nuevo "camino" por tierras majoreras para mostrarles nuestra gastronomía tradicional combinada con un toque de vanguardia y así se lo queremos mostrar...</p>
+      <br>
+      <hr class='m-y-md'>
+    </div>
+    <div class='jumbotron bg-secondary'>
+      <div class="row">
+        <div class="col-md-8 col-sm-12">
+          <div class="bd-example">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img src="images/inicio/mesa.jpg" class="rounded mx-auto d-block">
+                </div>
+                <div class="carousel-item">
+                  <img src="images/inicio/mesa.jpg" class="rounded mx-auto d-block">
+                </div>
+                <div class="carousel-item">
+                  <img src="images/inicio/mesa.jpg" class="rounded mx-auto d-block">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12">
+
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3517.662409569493!2d-14.231231985088023!3d28.156760382607988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xc479cf80eabb83f%3A0x2d28dea7a72761ac!2sCalle+Risco+Blanco%2C+79%2C+35627+Costa+Calma%2C+Las+Palmas!5e0!3m2!1ses!2ses!4v1560634644020!5m2!1ses!2ses" width="300" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <?php
+
+    buscar($conex);
     break;
 
     case "tapas":

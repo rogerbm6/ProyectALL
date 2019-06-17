@@ -5,13 +5,28 @@ function manjares($con){
 
 while($registro = mysqli_fetch_array($comidas_pequenos)){
 
-
   echo "
   <div class='jumbotron bg-secondary'>
-  <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-  <p class='lead'>".$registro["descripcion"]."</p>
-  <p class='lead'>".$registro["precio"]." &euro;</p>
-  <hr>
+    <div class='row'>
+      <div class='col-md-9 col-sm-12'>
+        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+        <p class='lead'>".$registro["descripcion"]."</p>
+        <p class='lead'>".$registro["precio"]." &euro;</p>
+
+      </div>
+      <div class='col-md-3 col-sm-12'>
+      ";
+        if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+          ?>
+          <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+        <?php
+        }
+  echo "
+
+      </div>
+    </div>
+
+
   </div>";
     }
 }
@@ -23,13 +38,28 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
 		while($registro = mysqli_fetch_array($comidas_tapas)){
 
-
-			echo "
+      echo "
       <div class='jumbotron bg-secondary'>
-        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-  			<p class='lead'>".$registro["descripcion"]."</p>
-  			<p class='lead'>".$registro["precio"]." &euro;</p>
-  			<hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
     }
@@ -43,10 +73,26 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
       echo "
       <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-      <p class='lead'>".$registro["descripcion"]."</p>
-      <p class='lead'>".$registro["precio"]." &euro;</p>
-      <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
     }
@@ -62,10 +108,26 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
       echo "
       <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-      <p class='lead'>".$registro["descripcion"]."</p>
-      <p class='lead'>".$registro["precio"]." &euro;</p>
-      <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
     }
@@ -75,14 +137,28 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         $comidas_vegetariano = mysqli_query($con,"SELECT * FROM comidas WHERE tipo='vegetariano'");
 
     while($registro = mysqli_fetch_array($comidas_vegetariano)){
-
-
       echo "
       <div class='jumbotron bg-secondary'>
-        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-        <p class='lead'>".$registro["descripcion"]."</p>
-        <p class='lead'>".$registro["precio"]." &euro;</p>
-        <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
     }
@@ -93,14 +169,28 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         $comidas_carne_pas_pes = mysqli_query($con,"SELECT * FROM comidas WHERE tipo='carne' OR tipo='pescado' OR tipo='pasta'");
 
     while($registro = mysqli_fetch_array($comidas_carne_pas_pes)){
-
-
       echo "
       <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-      <p class='lead'>".$registro["descripcion"]."</p>
-      <p class='lead'>".$registro["precio"]." &euro;</p>
-      <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
     }
@@ -112,13 +202,28 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
     while($registro = mysqli_fetch_array($comidas_postres)){
 
-
       echo "
       <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-      <p class='lead'>".$registro["descripcion"]."</p>
-      <p class='lead'>".$registro["precio"]." &euro;</p>
-      <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
     }
@@ -134,10 +239,24 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
       echo "
       <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$almacen["nombre"]."</h1>
-      <p class='lead'>".$almacen["descripcion"]."</p>
-      <p class='lead'>".$almacen["precio"]." &euro;</p>
-      <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$almacen["nombre"]."</h1>
+            <p class='lead'>".$almacen["descripcion"]."</p>
+            <p class='lead'>".$almacen["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/almacen/alm_".$almacen["idAlmacen"].".jpeg")){
+              ?>
+              <img src="images/almacen/alm_<?php echo $almacen["idAlmacen"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+        </div>
+
+       </div>
       </div>";
             }
 
@@ -147,24 +266,51 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
       echo "
       <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-      <p class='lead'>".$registro["descripcion"]."</p>
-      <p class='lead'>".$registro["precio"]." &euro;</p>
-      <hr>
+        <div class='row'>
+          <div class='col-md-9 col-sm-12'>
+            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <p class='lead'>".$registro["descripcion"]."</p>
+            <p class='lead'>".$registro["precio"]." &euro;</p>
+
+          </div>
+          <div class='col-md-3 col-sm-12'>
+          ";
+            if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+              ?>
+              <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+            <?php
+            }
+      echo "
+
+          </div>
+        </div>
+
+
       </div>";
         }
 
       while($licores = mysqli_fetch_array($almacen_licor)){
+        echo "
+        <div class='jumbotron bg-secondary'>
+          <div class='row'>
+            <div class='col-md-9 col-sm-12'>
+              <h1 class='display-4' style='background-color: #d8a3b0;'>".$licores["nombre"]."</h1>
+              <p class='lead'>".$licores["descripcion"]."</p>
+              <p class='lead'>".$licores["precio"]." &euro;</p>
 
+            </div>
+            <div class='col-md-3 col-sm-12'>
+            ";
+              if(file_exists("images/almacen/alm_".$licores["idAlmacen"].".jpeg")){
+                ?>
+                <img src="images/almacen/alm_<?php echo $licores["idAlmacen"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+              <?php
+              }
+        echo "
+          </div>
 
-      echo "
-      <div class='jumbotron bg-secondary'>
-      <h1 class='display-4' style='background-color: #d8a3b0;'>".$licores["nombre"]."</h1>
-      <h1>".$licores["categoria"]."
-      <p class='lead'>".$licores["descripcion"]."</p>
-      <p class='lead'>".$licores["precio"]." &euro;</p>
-      <hr>
-      </div>";
+        </div>
+        </div>";
       }
     }
 
@@ -177,11 +323,24 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       $ident = "a".$registro["idComida"];
       echo "
       <div class='jumbotron bg-secondary'>
+      <div class='row'>
+        <div class='col-md-9 col-sm-12'>
         <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
         <h1>".$registro["tipo"]."</h1>
         <p class='lead'>".$registro["descripcion"]."</p>
         <p class='lead'>".$registro["precio"]." &euro;</p>
         <p class='lead'>".$registro["alergenos"]."</p>
+        </div>
+        <div class='col-md-3 col-sm-12'>
+        ";
+          if(file_exists("../../images/platos/comida_".$registro["idComida"].".jpeg")){
+            ?>
+            <img src="../../images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+          <?php
+          }
+    echo "
+        </div>
+      </div>
         <hr>
         <a href='index.php?accion=borrar&idComida=".$registro["idComida"]."' class='btn btn-danger'>Borrar</a>
 
@@ -232,6 +391,16 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
                 <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='precio' value=".$registro["precio"].">
               </div>
 
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroupFileAddon01'>Foto</span>
+                </div>
+                <div class='custom-file'>
+                  <input type='file' class='custom-file-input' id='inputGroupFile01' aria-describedby='inputGroupFileAddon01' name='foto'>
+                  <label class='custom-file-label' for='inputGroupFile01'> Elige la foto</label>
+                </div>
+              </div>
+
               <button type='sumbit' class='btn btn-primary'>Aceptar</button>
 
             </form>
@@ -254,13 +423,25 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       $ident = "a".$registro["idAlmacen"];
       echo "
       <div class='jumbotron bg-secondary'>
-        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
-        <h1>".$registro["stock"]."</h1>
-        <p class='lead'>".$registro["tipoStock"]."</p>
-        <p class='lead'>".$registro["categoria"]."</p>
-        <p class='lead'>".$registro["descripcion"]."</p>
-        <p class='lead'>".$registro["precio"]." &euro;</p>
-
+      <div class='row'>
+        <div class='col-md-9 col-sm-12'>
+          <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+          <h1>".$registro["stock"]."</h1>
+          <p class='lead'>".$registro["tipoStock"]."</p>
+          <p class='lead'>".$registro["categoria"]."</p>
+          <p class='lead'>".$registro["descripcion"]."</p>
+          <p class='lead'>".$registro["precio"]." &euro;</p>
+        </div>
+        <div class='col-md-3 col-sm-12'>
+        ";
+          if(file_exists("../../images/almacen/alm_".$registro["idAlmacen"].".jpeg")){
+            ?>
+            <img src="../../images/almacen/alm_<?php echo $registro["idAlmacen"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+          <?php
+          }
+    echo "
+        </div>
+      </div>
         <hr>
 
         <a href='index.php?menu=almacen&accion=borraralm&idAlmacen=".$registro["idAlmacen"]."' class='btn btn-danger'>Borrar</a>
@@ -330,6 +511,16 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
                 <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='precio' value=".$registro["precio"].">
               </div>
 
+              <div class='input-group mb-3'>
+                <div class='input-group-prepend'>
+                  <span class='input-group-text' id='inputGroupFileAddon01'>Foto</span>
+                </div>
+                <div class='custom-file'>
+                  <input type='file' class='custom-file-input' id='inputGroupFile01' aria-describedby='inputGroupFileAddon01' name='foto'>
+                  <label class='custom-file-label' for='inputGroupFile01'> Elige la foto</label>
+                </div>
+              </div>
+
               <button type='sumbit' class='btn btn-primary'>Aceptar</button>
 
             </form>
@@ -343,6 +534,41 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         }
     }
 
+    function buscar($con){
+      if (isset($_POST["buscar"])) {
+        $plat =  "select * from comidas where nombre like '%".$_POST["palabra"]."%' or descripcion like '%".$_POST["palabra"]."%'";
+        $busqueda = mysqli_query($con,$plat);
+        while($registro = mysqli_fetch_array($busqueda)){
+
+        echo "
+        <div class='jumbotron bg-secondary'>
+          <div class='row'>
+            <div class='col-md-9 col-sm-12'>
+              <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+              <p class='lead'>".$registro["descripcion"]."</p>
+              <p class='lead'>".$registro["precio"]." &euro;</p>
+
+            </div>
+            <div class='col-md-3 col-sm-12'>
+            ";
+              if(file_exists("images/platos/comida_".$registro["idComida"].".jpeg")){
+                ?>
+                <img src="images/platos/comida_<?php echo $registro["idComida"]; ?>.jpeg" class='img-rounded img-fluid img-thumbnail'/>
+              <?php
+              }
+        echo "
+
+            </div>
+          </div>
+
+
+        </div>";
+
+
+      }
+    }
+  }
+
 
     function accion($con){
       if(isset($_REQUEST["accion"])){
@@ -354,6 +580,9 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
           mysqli_query($con, $query);
 
+          $foto = mysqli_insert_id($con);
+		      move_uploaded_file($_FILES['foto']['tmp_name'],"../../images/platos/comida_".$foto.".jpeg");
+
           header("Location:index.php?menu=comidas");
 
         }
@@ -361,7 +590,9 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         if ($crud == "borrar") {
 
           mysqli_query($con, "delete from comidas where idComida = ".$_GET["idComida"]." ;");
-
+          if(file_exists("../../images/platos/comida_".$_REQUEST["idComida"].".jpeg")){
+      			      unlink("../../images/platos/comida_".$_REQUEST["idComida"].".jpeg");
+      		}
           header("Location:index.php?menu=comidas");
 
         }
@@ -370,6 +601,8 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
           mysqli_query($con, "update comidas set tipo = '".trim($_POST["tipo"])."', nombre= '".trim($_POST["nombre"])."', descripcion = '".trim($_POST["descripcion"])."', precio = ".$_POST["precio"]." where idComida = ".$_POST["idComida"]."");
 
+          move_uploaded_file($_FILES['foto']['tmp_name'],"../../images/platos/comida_".$_POST["idComida"].".jpeg");
+
           header("Location:index.php?menu=comidas");
 
         }
@@ -377,9 +610,11 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         if ($crud == "insertaralm") {
 
           $query =  "insert into almacen(stock, tipoStock, categoria, descripcion, nombre, precio) values(".$_POST["stock"].", '".$_POST["tipoStock"]."','".$_POST["categoria"]."' , '".$_POST["descripcion"]."' ,'".$_POST["nombre"]."',".$_POST["precio"]." )";
-
-
           mysqli_query($con, $query);
+          $foto = mysqli_insert_id($con);
+		      move_uploaded_file($_FILES['foto']['tmp_name'],"../../images/almacen/alm_".$foto.".jpeg");
+
+
 
           header("Location:index.php?menu=almacen");
 
@@ -388,7 +623,9 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         if ($crud == "borraralm") {
 
           mysqli_query($con, "delete from almacen where idAlmacen = ".$_GET["idAlmacen"]." ;");
-
+          if(file_exists("../../images/almacen/alm_".$_REQUEST["idAlmacen"].".jpeg")){
+      			      unlink("../../images/almacen/alm_".$_REQUEST["idAlmacen"].".jpeg");
+      		}
           header("Location:index.php?menu=almacen");
 
         }
@@ -398,6 +635,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
           mysqli_query($con, "update almacen set stock = ".$_POST["stock"].", tipoStock= '".trim($_POST["tipoStock"])."', categoria = '".trim($_POST["categoria"])."', descripcion = '".trim($_POST["descripcion"])."', nombre = '".trim($_POST["nombre"])."',
             precio = ".$_POST["precio"]."   where idAlmacen = ".$_POST["idAlmacen"]."");
 
+          move_uploaded_file($_FILES['foto']['tmp_name'],"../../images/almacen/alm_".$_POST["idAlmacen"].".jpeg");
           header("Location:index.php?menu=almacen");
 
         }
@@ -491,6 +729,58 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
         }
 
+        if ($crud == "borrarbe") {
+
+          mysqli_query($con, "delete from salen where idPedido = ".$_GET["idPedido"]." and idAlmacen=".$_GET["idAlmacen"].";");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "actualizarplatobebida") {
+
+          mysqli_query($con, "update salen set cantidad = '".trim($_POST["cantidad"])."' where idPedido = ".$_POST["idPedido"]." and idAlmacen=".$_POST["idAlmacen"]."");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "insertarplatobebida") {
+
+          mysqli_query($con, "insert into salen(idPedido,idAlmacen, cantidad) values(".$_POST["idPedido"].",".$_POST["idAlmacen"].",".$_POST["cantidad"].")");
+
+          header("Location:index.php?menu=pedidos");
+
+        }
+
+        if ($crud == "insertareserva") {
+
+          $query =  "insert into reservas(mesa, nombreCont, telefono, fecHorllamada, observaciones, fecha, hora, idEmpleado) values(".$_POST["mesa"].", '".$_POST["nombreCont"]."','".$_POST["telefono"]."' , now() ,'".$_POST["observaciones"]."','".$_POST["fecha"]."','".$_POST["hora"]."',(select idEmpleado from empleados
+          where nombre='".$_SESSION["usuario"]."') )";
+
+
+          mysqli_query($con, $query);
+
+          header("Location:index.php?menu=reservas");
+
+        }
+
+        if ($crud == "borrareser") {
+
+          mysqli_query($con, "delete from reservas where idreserva = ".$_GET["idreserva"].";");
+
+          header("Location:index.php?menu=reservas");
+
+        }
+
+        if ($crud == "actualizareserva") {
+
+          mysqli_query($con, "update reservas set nombreCont = '".trim($_POST["nombre"])."', telefono='".trim($_POST["telefono"])."',fecha='".trim($_POST["fecha"])."',hora='".trim($_POST["hora"])."'
+          ,mesa='".trim($_POST["mesa"])."',observaciones='".trim($_POST["observaciones"])."' where idreserva = ".$_POST["idreserva"]."");
+
+          header("Location:index.php?menu=reservas");
+
+        }
 
 
 
@@ -498,6 +788,140 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
       }
 
+    }
+
+
+
+    function reservas($con){
+
+      $reservas = mysqli_query($con,"SELECT r.idreserva, r.nombreCont,r.telefono'tl',r.fecha,r.hora,r.mesa,r.observaciones,e.nombre'em' FROM reservas r left join empleados e on e.idEmpleado=r.idreserva ORDER BY idreserva DESC");
+
+    while($registro = mysqli_fetch_array($reservas)){
+      $ident = "a".$registro["idreserva"];
+      echo "
+      <div class='jumbotron bg-secondary'>
+
+      <div class='row'>
+        <div class='col-md-7 col-sm-12'>
+          <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombreCont"]."</h1>
+          <p class='lead'>Tlf:".$registro["tl"]."</p>
+          <p class='lead'>Fecha: ".$registro["fecha"]."  Hora: ".$registro["hora"]."</p>
+          <p class='lead'>Mesa : ".$registro["mesa"]."</p>
+          <p class='lead'>Hecha por : ".$registro["em"]."</p>
+        </div>
+        <div class='col-md-5 col-sm-12'>
+        <h1>".$registro["observaciones"]."</h1>
+        </div>
+      </div>
+
+        <hr>
+        <a href='index.php?menu=reservas&accion=borrareser&idreserva=".$registro["idreserva"]."' class='btn btn-danger'>Borrar</a>
+
+
+        <button class='btn btn-primary' type='button' data-toggle='collapse' data-target='#".$ident."' aria-expanded='false' aria-controls='".$ident."'>Actualizar</button>
+        <div class='collapse' id='".$ident."'>
+          <div class='card card-body'>
+            <form method='POST' enctype='multipart/form-data' action='index.php?menu=reservas'>
+              <input type='hidden' name='accion' value='actualizareserva' />
+              <input type='hidden' name='idreserva' value='".$registro["idreserva"]."'/>
+
+              <div class='row'>
+                <div class='input-group mb-3'>
+                  <div class='col-md-2 col-sm-12'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Nombre</span>
+                    </div>
+                  </div>
+                  <div class='col-md-10 col-sm-12'>
+                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre' value=".$registro["nombreCont"].">
+                  </div>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-group mb-3'>
+                  <div class='col-md-2 col-sm-12'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Telefono</span>
+                    </div>
+                  </div>
+                  <div class='col-md-10 col-sm-12'>
+                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='telefono' value=".$registro["tl"]." pattern='[0-9]{9}'>
+                  </div>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-group mb-3'>
+                  <div class='col-md-2 col-sm-12'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Fecha</span>
+                    </div>
+                  </div>
+                  <div class='col-md-10 col-sm-12'>
+                    <input type='date' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='fecha' value=".$registro["fecha"].">
+                  </div>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-group mb-3'>
+                  <div class='col-md-2 col-sm-12'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Hora</span>
+                    </div>
+                  </div>
+                  <div class='col-md-10 col-sm-12'>
+                    <input type='time' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='hora' value=".$registro["hora"].">
+                  </div>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-group mb-3'>
+                  <div class='col-md-2 col-sm-12'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text' id='inputGroup-sizing-default'>Mesa</span>
+                    </div>
+                  </div>
+                  <div class='col-md-10 col-sm-12'>
+                    <input type='number' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='mesa' value=".$registro["mesa"].">
+                  </div>
+                </div>
+              </div>
+
+              <div class='row'>
+                <div class='input-group'>
+                  <div class='col-md-2 col-sm-12'>
+                    <div class='input-group-prepend'>
+                      <span class='input-group-text'>Observaciones</span>
+                    </div>
+                  </div>
+                  <div class='col-md-10 col-sm-12'>
+                    <textarea class='form-control' aria-label='With textarea' name='observaciones'>".$registro["observaciones"]."</textarea>
+                  </div>
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+              <button type='sumbit' class='btn btn-primary'>Aceptar</button>
+
+            </form>
+          </div>
+        </div>
+
+
+
+
+      </div>";
+        }
     }
 
 
@@ -677,7 +1101,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
               echo "<tr>";
                       if (isset($registros2["prea"])) {
-                        echo "<td>".$registros2["prea"]."</td>";
+                        echo "<td>".$registros2["prea"]*$registros2["can"]." &euro;</td>";
                       }else {echo "<td>NO</td>";}
                       if (isset($registros2["alm"])) {
                         echo "<td>".$registros2["alm"]."</td>";
@@ -708,7 +1132,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
               echo "<tr>";
                       if (isset($registros["pre"])) {
-                        echo "<td>".$registros["pre"]."</td>";
+                        echo "<td>".$registros["pre"]*$registros["can"]." &euro;</td>";
                       }else {echo "<td>NO</td>";}
                       if (isset($registros["com"])) {
                         echo "<td>".$registros["com"]."</td>";
@@ -734,7 +1158,7 @@ echo "
 
         <div class='row'>
           <div class='col-6'>
-            <p class='lead'>Total: ".$registro["importe"]."</p>
+            <p class='lead'>Total: ".$registro["importe"]." &euro;</p>
           </div>
           <div class='col-6'>
             <p class='lead'>Hecha por: ".$registro["nombre"]."</p>
@@ -769,10 +1193,7 @@ echo "
               </div>
               <div class='modal-body'>
 
-                <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
-                  <input type='hidden' name='accion' value='actualizarped' />
-                  <input type='hidden' name='idPedido' value='".$registro["idPedido"]."'/>";
-                  echo "<div class='row'>
+                        <div class='row'>
                           <div class='col-12'>
                             <ul class='list-group'>";
 
@@ -786,7 +1207,7 @@ echo "
                               <div class='row'>
                                 <div class='col-md-8 col-sm-12'>
                                   <li class='list-group-item d-flex justify-content-between align-items-center'>
-                                  ".$regi2["alm"]." -- ".$mul = $regi2["pre"]*$regi2["can"]."
+                                  ".$regi2["alm"]." -- ".$nul = $regi2["pre"]*$regi2["can"]."&euro;
                                 <a href='index.php?menu=pedidos&accion=borrarbe&idPedido=".$idee."&idAlmacen=".$regi2["idal"]."' class='btn btn-danger'>Borrar</a>
                                   </li>
                                 </div>
@@ -860,8 +1281,6 @@ echo "
 
 
 echo "
-                </form>
-
 
 
               </div>
@@ -886,10 +1305,8 @@ echo "
               </div>
               <div class='modal-body'>
 
-                <form method='POST' enctype='multipart/form-data' action='index.php?menu=pedidos'>
-                  <input type='hidden' name='accion' value='actualizarped' />
-                  <input type='hidden' name='idPedido' value='".$registro["idPedido"]."'/>";
-                  echo "<div class='row'>
+
+                  <div class='row'>
                           <div class='col-12'>
                             <ul class='list-group'>";
 
@@ -977,7 +1394,7 @@ echo "
 
 
 echo "
-                </form>
+
 
 
 
@@ -1094,7 +1511,7 @@ echo "
                     </div>
                   </div>
                   <div class='col-md-9'>
-                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9}'>
+                    <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='TlfCont' pattern='[0-9]{9} tittle='telefono de nueve numeros''>
                   </div>
                 </div>
 
