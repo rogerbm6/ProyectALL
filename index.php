@@ -22,7 +22,7 @@ switch($menu){
     ?>
 
     <div class='jumbotron'>
-      <h1 class='display-4'>¡Bienvenidos a nuestro rincón!</h1>
+      <h1 class='display-4' id="tit">¡Bienvenidos a nuestro rincón!</h1>
       <p class='lead'>Despues de recorrer un largo "camino" por tierras de la península ibérica, conociendo todos los secretos de nuestros
       mayores, tradición, cultura, empezamos un nuevo "camino" por tierras majoreras para mostrarles nuestra gastronomía tradicional combinada con un toque de vanguardia y así se lo queremos mostrar...</p>
       <br>
@@ -79,7 +79,7 @@ switch($menu){
     case "tapas":
     echo "
       <div class='jumbotron'>
-        <h1 class='display-4'>Pasión por el bocado</h1>
+        <h1 class='display-4' id='tit'>Pasión por el bocado</h1>
         <p class='lead'>Las 'tapas'...</p>
         <br>
         <p class='lead'>...forman parte importante de la cultura gastronómica española. Son sencillas, rápidas y el mejor acompañamiento para un buen vino  </p>
@@ -92,7 +92,7 @@ switch($menu){
     case "manjares":
     echo "
       <div class='jumbotron'>
-        <h1 class='display-4'>Pequeños Manjares</h1>
+        <h1 class='display-4' id='tit'>Pequeños Manjares</h1>
         <hr class='m-y-md'>
       </div>
       ";
@@ -102,7 +102,7 @@ switch($menu){
     case "picar":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-4'>Nuestro rincón favorito</h1>
+      <h1 class='display-4' id='tit'>Nuestro rincón favorito</h1>
       <hr class='m-y-md'>
       <p class='lead'>Quesos de leche de cabra no pasteurizada</p>
 
@@ -114,7 +114,7 @@ switch($menu){
     case "ensaladas":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-4'>Ensaladas frescas de la tierra</h1>
+      <h1 class='display-4' id='tit'>Ensaladas frescas de la tierra</h1>
       <hr class='m-y-md'>
     </div>";
 
@@ -124,7 +124,7 @@ switch($menu){
     case "vegetariano":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-4'>El rincón vegetariano</h1>
+      <h1 class='display-4' id='tit'>El rincón vegetariano</h1>
       <hr class='m-y-md'>
       <p class='lead'>Tenemos incorporado en este menú algunos platos vegetarianos.</p>
       <br>
@@ -137,7 +137,7 @@ switch($menu){
     case "fuertes":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-4'>Carne, Mar y Más</h1>
+      <h1 class='display-4' id='tit'>Carne, Mar y Más</h1>
       <hr class='m-y-md'>
       <p class='lead'>Nosotros usamos exclusivamente liquido de oro español!. Es un coste que asumimos con gusto para darle una calidad excepcional al producto</p>
       <br>
@@ -158,7 +158,7 @@ switch($menu){
     case "postres":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-4'>Al final</h1>
+      <h1 class='display-4' id='tit'>Al final</h1>
       <hr class='m-y-md'>
     </div>";
 
@@ -168,7 +168,7 @@ switch($menu){
     case "bebidas":
     echo "
     <div class='jumbotron'>
-      <h1 class='display-4'>Refrescantes</h1>
+      <h1 class='display-4' id='tit'>Refrescantes</h1>
       <hr class='m-y-md'>
     </div>";
 

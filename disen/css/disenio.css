@@ -17,3 +17,14 @@
 #foo {
   color: rgb(255, 255, 255);
 }
+
+#nav{
+  width: 30px;
+  height: auto;
+}
+
+@media screen and (max-width: 360px) {
+  #tit{
+        font-size: 2.9rem;
+  }
+}

@@ -38,7 +38,7 @@ function headere($titulo)
             <span class="navbar-toggler-icon"></span>
 
           </button>
-          <a class="navbar-brand text-light" href="index.php">Inicio</a>
+          <a class="navbar-brand text-light" href="index.php"><img src="images/nav.png" id="nav" alt="logo" class="img-rounded img-fluid"></a>
 
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto mt-2 mt-md-0">
@@ -98,7 +98,7 @@ function footer()
             <div class="bg-dark ">
               <div class="container-fluid" id='foo'>
                 <div class="row">
-                  <div class="col-4">
+                  <div class="col-md-4 col-sm-12">
                     <p class="lead">
                       Información y contacto
                     </p>
@@ -108,7 +108,7 @@ function footer()
                       <li>info@elcaminodejose.com</li>
                     </ul>
                   </div>
-                  <div class="col-4">
+                  <div class="col-md-4 col-sm-12">
                     <p class="lead" id='foo'>
                       Dirección
                     </p>
@@ -117,7 +117,7 @@ function footer()
                       Calle Risco Blanco, 79
                     </p>
                   </div>
-                  <div class="col-4">
+                  <div class="col-md-4 col-sm-12">
                     <p class="lead" id='foo'>
                       Desarrollador
                     </p>

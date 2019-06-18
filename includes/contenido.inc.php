@@ -9,7 +9,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
   <div class='jumbotron bg-secondary'>
     <div class='row'>
       <div class='col-md-9 col-sm-12'>
-        <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+        <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
         <p class='lead'>".$registro["descripcion"]."</p>
         <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -42,7 +42,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -75,7 +75,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -110,7 +110,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -141,7 +141,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -173,7 +173,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -206,7 +206,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -241,7 +241,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$almacen["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$almacen["nombre"]."</h1>
             <p class='lead'>".$almacen["descripcion"]."</p>
             <p class='lead'>".$almacen["precio"]." &euro;</p>
 
@@ -268,7 +268,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
       <div class='jumbotron bg-secondary'>
         <div class='row'>
           <div class='col-md-9 col-sm-12'>
-            <h1 class='display-4' style='background-color: #d8a3b0;'>".$registro["nombre"]."</h1>
+            <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$registro["nombre"]."</h1>
             <p class='lead'>".$registro["descripcion"]."</p>
             <p class='lead'>".$registro["precio"]." &euro;</p>
 
@@ -294,7 +294,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
         <div class='jumbotron bg-secondary'>
           <div class='row'>
             <div class='col-md-9 col-sm-12'>
-              <h1 class='display-4' style='background-color: #d8a3b0;'>".$licores["nombre"]."</h1>
+              <h1 class='display-4' style='background-color: #d8a3b0;' id='tit'>".$licores["nombre"]."</h1>
               <p class='lead'>".$licores["descripcion"]."</p>
               <p class='lead'>".$licores["precio"]." &euro;</p>
 
@@ -1082,7 +1082,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
 
 
 
-        <table class='table table-sm'>
+        <table class='table table-striped table-sm'>
           <thead>
             <tr>
               <th scope='col'>Precio bebida</th>
@@ -1114,7 +1114,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
           </table>
           </div>
           <div class='col-md-6 col-sm-12'>
-          <table class='table table-sm'>
+          <table class='table table-striped table-sm'>
             <thead>
               <tr>
                 <th scope='col'>Precio platos</th>
