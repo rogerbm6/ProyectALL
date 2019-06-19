@@ -992,7 +992,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
                 <div class='input-group-prepend'>
                   <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
                 </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email' value=".$registro["email"].">
+                <input type='email' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email' value=".$registro["email"]." >
               </div>
 
               <br>
@@ -1010,7 +1010,7 @@ while($registro = mysqli_fetch_array($comidas_pequenos)){
                 <div class='input-group-prepend'>
                   <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
                 </div>
-                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' value=".$registro["passwords"]." >
+                <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' value=".$registro["passwords"]." minlength='5'>
               </div>
 
               <br>

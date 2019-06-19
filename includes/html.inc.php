@@ -163,6 +163,7 @@ function headerlogin($titulo)
         <link type="text/css" href="../../disen/css/bootstrap.min.css" rel="stylesheet">
         <link type="text/css" href="../../disen/css/disenio.css" rel="stylesheet">
         <link type="image/png" href="../../images/primera.png" rel="icon" sizes="auto">
+        <link type="text/css" href="../../disen/css/bootstrapvalidation.css">
     </head>
 
     <body class="bg-primary">
@@ -264,10 +265,17 @@ function footerlogin()
 
 
 
-
         <script src="../../disen/js/jquery-3.4.1.min.js"></script>
+
         <script src="../../disen/js/popper.min.js"></script>
+
         <script src="../../disen/js/bootstrap.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="../../js/jqBootstrapValidation.js"></script>
+        <script>
+          $(function () { $("input,select,textarea").not("[type=submit]").jqBootstrapValidation(); } );
+        </script>
 
     </body>
 

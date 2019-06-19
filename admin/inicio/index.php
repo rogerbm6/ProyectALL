@@ -44,7 +44,7 @@ $conex = connectdb("caminodejose");
                   <div class='input-group-prepend'>
                     <label class='input-group-text' for='tipo'>Tipos</label>
                   </div>
-                  <select class='custom-select' name='tipo'>
+                  <select class='custom-select' name='tipo' required>
                     <option selected>Elige...</option>
                     <option value='pescado'>Pescado</option>
                     <option value='carne'>Carne</option>
@@ -62,7 +62,7 @@ $conex = connectdb("caminodejose");
                   <div class='input-group-prepend'>
                     <span class='input-group-text' id='inputGroup-sizing-default'>Nombre</span>
                   </div>
-                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre'>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='nombre' minlength='4' required>
                 </div>
 
                 <div class='input-group'>
@@ -76,7 +76,7 @@ $conex = connectdb("caminodejose");
                   <div class='input-group-prepend'>
                     <span class='input-group-text' id='inputGroup-sizing-default'>Precio</span>
                   </div>
-                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='precio'>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='precio' required>
                 </div>
 
                 <div class='input-group mb-3'>
@@ -237,7 +237,7 @@ $conex = connectdb("caminodejose");
                   <div class='input-group-prepend'>
                     <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
                   </div>
-                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email'>
+                  <input type='email' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='email'>
                 </div>
 
                 <div class='input-group mb-3'>
@@ -251,7 +251,7 @@ $conex = connectdb("caminodejose");
                   <div class='input-group-prepend'>
                     <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
                   </div>
-                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords'>
+                  <input type='text' class='form-control' aria-label='Sizing example input' aria-describedby='inputGroup-sizing-default' name='passwords' minlength='5'>
                 </div>
 
                 <div class='input-group mb-3'>
